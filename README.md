@@ -61,3 +61,35 @@ A classic Ukrainian beet soup, served hot or cold.
 4. Stir in the cabbage and garlic, and simmer until the vegetables are fully tender, about 10 more minutes.
 5. Stir in the vinegar or lemon juice, and season with salt and pepper.
 6. Serve hot or chilled, topped with a dollop of sour cream and fresh dill.
+
+## Recipe: Spaghetti Bolognese
+
+A rich, slow-simmered Italian meat sauce.
+
+### Ingredients
+
+- 2 tablespoons olive oil
+- 1 onion, finely diced
+- 2 carrots, finely diced
+- 2 stalks celery, finely diced
+- 2 cloves garlic, minced
+- 1 lb (450g) ground beef (or a mix of beef and pork)
+- 1/2 cup red wine (optional)
+- 2 tablespoons tomato paste
+- 1 can (28 oz) crushed tomatoes
+- 1/2 cup milk or cream
+- 1 bay leaf
+- Salt and pepper, to taste
+- Spaghetti or tagliatelle, for serving
+- Grated Parmesan, for garnish
+
+### Instructions
+
+1. Heat the olive oil in a large pot over medium heat. Add the onion, carrots, and celery, and sauté until softened, about 8 minutes.
+2. Stir in the garlic and cook for 1 minute more.
+3. Add the ground beef, breaking it up with a spoon, and cook until browned.
+4. Pour in the red wine (if using) and simmer until mostly evaporated.
+5. Stir in the tomato paste and cook for 2 minutes, then add the crushed tomatoes and bay leaf. Bring to a simmer.
+6. Reduce heat to low and simmer uncovered for at least 1.5–2 hours, stirring occasionally, until thick and rich.
+7. Stir in the milk or cream during the last 15 minutes of cooking, and season with salt and pepper.
+8. Remove the bay leaf, then serve over cooked spaghetti or tagliatelle, topped with grated Parmesan.
