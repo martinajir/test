@@ -61,3 +61,33 @@ A classic Ukrainian beet soup, served hot or cold.
 4. Stir in the cabbage and garlic, and simmer until the vegetables are fully tender, about 10 more minutes.
 5. Stir in the vinegar or lemon juice, and season with salt and pepper.
 6. Serve hot or chilled, topped with a dollop of sour cream and fresh dill.
+
+## Recipe: Beef Wellington
+
+A show-stopping dish of tenderloin, mushroom duxelles, and prosciutto wrapped in golden puff pastry.
+
+### Ingredients
+
+- 2 lb beef tenderloin, trimmed
+- Salt and pepper, to taste
+- 2 tablespoons olive oil
+- 2 tablespoons Dijon mustard
+- 1 lb mushrooms, finely chopped
+- 2 cloves garlic, minced
+- 1 shallot, minced
+- 1 sprig fresh thyme, leaves picked
+- 6 slices prosciutto
+- 1 sheet puff pastry, thawed
+- 2 egg yolks, beaten (for egg wash)
+- Flour, for dusting
+
+### Instructions
+
+1. Season the tenderloin generously with salt and pepper. Heat the olive oil in a hot skillet and sear the beef on all sides until browned, about 1 minute per side. Remove and let cool, then brush all over with the Dijon mustard.
+2. In the same skillet, cook the mushrooms, garlic, shallot, and thyme over medium heat, stirring often, until all the moisture has evaporated and the mixture (duxelles) is dry and paste-like, about 10 minutes. Season with salt and pepper, then let cool.
+3. Lay out a sheet of plastic wrap and arrange the prosciutto slices in an overlapping layer. Spread the mushroom duxelles evenly over the prosciutto.
+4. Place the tenderloin on top and use the plastic wrap to roll the prosciutto and duxelles tightly around the beef. Twist the ends to seal and chill in the refrigerator for at least 20 minutes.
+5. On a lightly floured surface, roll out the puff pastry. Unwrap the beef and place it in the center, then wrap the pastry around it, trimming excess and sealing the seams. Chill for another 20 minutes.
+6. Preheat the oven to 400°F (200°C). Brush the pastry all over with egg wash and score decoratively with a knife.
+7. Bake for 35–45 minutes, until the pastry is golden brown and a meat thermometer reads 125°F (52°C) for medium-rare.
+8. Rest for 10 minutes before slicing and serving.
