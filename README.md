@@ -61,3 +61,37 @@ A classic Ukrainian beet soup, served hot or cold.
 4. Stir in the cabbage and garlic, and simmer until the vegetables are fully tender, about 10 more minutes.
 5. Stir in the vinegar or lemon juice, and season with salt and pepper.
 6. Serve hot or chilled, topped with a dollop of sour cream and fresh dill.
+
+## Recipe: Svíčková (Czech Marinated Beef with Root Vegetable Sauce)
+
+A traditional Czech dish of beef sirloin braised with root vegetables in a creamy sauce, served with bread dumplings.
+
+### Ingredients
+
+- 2 lbs beef sirloin or tenderloin, trimmed
+- 4 slices bacon, chopped
+- 2 carrots, chopped
+- 1 parsley root or parsnip, chopped
+- 1/4 celery root (celeriac), chopped
+- 1 onion, chopped
+- 1 cup beef broth
+- 1 cup heavy cream
+- 2 tablespoons vinegar
+- 1 tablespoon sugar
+- 2 bay leaves
+- 5 whole allspice berries
+- 5 whole peppercorns
+- Salt, to taste
+- Bread dumplings (knedlíky), for serving
+- Whipped cream and lingonberry or cranberry sauce, for garnish
+
+### Instructions
+
+1. Season the beef with salt and let it marinate with the chopped carrots, parsley root, celery root, and onion for a few hours or overnight in the refrigerator.
+2. In a large pot, cook the bacon until the fat renders. Add the marinated vegetables and beef, and sear the meat on all sides.
+3. Add the bay leaves, allspice, peppercorns, and enough broth to partially cover the meat. Cover and braise over low heat, turning occasionally, until the beef is tender, about 2–3 hours.
+4. Remove the beef and set aside. Discard the bay leaves, allspice, and peppercorns from the pot.
+5. Purée the remaining vegetables and cooking liquid until smooth, then return to the pot.
+6. Stir in the cream, vinegar, and sugar, and simmer for a few minutes. Adjust seasoning with salt to taste.
+7. Slice the beef thinly and return it to the sauce to warm through.
+8. Serve with bread dumplings, topped with a dollop of whipped cream and a spoonful of lingonberry or cranberry sauce.
