@@ -61,3 +61,35 @@ A classic Ukrainian beet soup, served hot or cold.
 4. Stir in the cabbage and garlic, and simmer until the vegetables are fully tender, about 10 more minutes.
 5. Stir in the vinegar or lemon juice, and season with salt and pepper.
 6. Serve hot or chilled, topped with a dollop of sour cream and fresh dill.
+
+## Recipe: Black Forest Cake
+
+A classic German chocolate cake layered with cherries and whipped cream.
+
+### Ingredients
+
+- 1 3/4 cups all-purpose flour
+- 2 cups sugar
+- 3/4 cup unsweetened cocoa powder
+- 1 1/2 teaspoons baking powder
+- 1 1/2 teaspoons baking soda
+- 1 teaspoon salt
+- 2 eggs
+- 1 cup buttermilk
+- 1 cup strong black coffee, hot
+- 1/2 cup vegetable oil
+- 1 teaspoon vanilla extract
+- 1 (24 oz) jar or can pitted cherries, drained (juice reserved)
+- 1/4 cup kirsch (cherry brandy), optional
+- 2 cups heavy cream, whipped and sweetened
+- Chocolate shavings, for garnish
+
+### Instructions
+
+1. Preheat the oven to 350°F (175°C). Grease and flour two 9-inch round cake pans.
+2. In a large bowl, whisk together the flour, sugar, cocoa powder, baking powder, baking soda, and salt.
+3. Add the eggs, buttermilk, oil, and vanilla, and beat until well combined. Stir in the hot coffee (the batter will be thin).
+4. Divide the batter between the prepared pans and bake for 30–35 minutes, or until a toothpick inserted in the center comes out clean. Cool completely.
+5. If desired, mix the reserved cherry juice with the kirsch and brush over the cake layers to moisten.
+6. Slice each cake layer in half horizontally to make four layers. Spread whipped cream and cherries between each layer, then frost the top and sides with the remaining whipped cream.
+7. Garnish with chocolate shavings and reserved cherries. Chill until ready to serve.
