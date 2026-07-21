@@ -61,3 +61,31 @@ A classic Ukrainian beet soup, served hot or cold.
 4. Stir in the cabbage and garlic, and simmer until the vegetables are fully tender, about 10 more minutes.
 5. Stir in the vinegar or lemon juice, and season with salt and pepper.
 6. Serve hot or chilled, topped with a dollop of sour cream and fresh dill.
+
+## Recipe: Znojemská (Czech Pork in Gherkin Sauce)
+
+A classic Czech dish of pork in a tangy, savory gherkin (pickle) sauce, named after the town of Znojmo.
+
+### Ingredients
+
+- 1 lb pork tenderloin or pork loin, cut into strips
+- 2 tablespoons oil or lard
+- 1 onion, diced
+- 2 cloves garlic, minced
+- 1 tablespoon flour
+- 1 cup beef or pork broth
+- 4–5 gherkins (pickled cucumbers), diced, plus a splash of pickle brine
+- 1 tablespoon tomato paste
+- 1 teaspoon sweet paprika
+- Salt and pepper, to taste
+- Sour cream, to finish
+
+### Instructions
+
+1. Season the pork strips with salt and pepper. Heat the oil in a large skillet over medium-high heat and brown the pork in batches. Remove and set aside.
+2. In the same skillet, sauté the onion until softened, about 5 minutes. Add the garlic and paprika, and cook for 1 minute more.
+3. Sprinkle in the flour and stir to coat, cooking for a minute to remove the raw taste.
+4. Stir in the tomato paste, then gradually whisk in the broth until smooth.
+5. Add the diced gherkins and a splash of pickle brine. Simmer for 10 minutes to let the flavors meld.
+6. Return the pork to the skillet and simmer until cooked through and the sauce has thickened, about 5–10 minutes.
+7. Stir in a spoonful of sour cream, season with salt and pepper to taste, and serve hot, traditionally with bread dumplings or rice.
