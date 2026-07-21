@@ -61,3 +61,33 @@ A classic Ukrainian beet soup, served hot or cold.
 4. Stir in the cabbage and garlic, and simmer until the vegetables are fully tender, about 10 more minutes.
 5. Stir in the vinegar or lemon juice, and season with salt and pepper.
 6. Serve hot or chilled, topped with a dollop of sour cream and fresh dill.
+
+## Recipe: Goulash
+
+A rich, paprika-spiced Hungarian beef stew.
+
+### Ingredients
+
+- 2 tablespoons oil or lard
+- 2 onions, diced
+- 2 lbs beef chuck, cut into cubes
+- 3 tablespoons Hungarian paprika
+- 2 cloves garlic, minced
+- 1 tablespoon tomato paste
+- 2 carrots, sliced
+- 2 potatoes, peeled and diced
+- 1 red bell pepper, chopped
+- 4 cups beef broth
+- 1 teaspoon caraway seeds
+- Salt and pepper, to taste
+- Sour cream and fresh parsley, for garnish
+
+### Instructions
+
+1. Heat the oil in a large pot over medium heat. Sauté the onions until soft and golden, about 8 minutes.
+2. Add the beef and brown on all sides, about 5–7 minutes.
+3. Remove the pot from the heat and stir in the paprika, garlic, and tomato paste, coating the meat evenly.
+4. Return to the heat, add the broth and caraway seeds, and bring to a boil. Reduce heat and simmer, covered, for about 1 hour, until the beef is tender.
+5. Add the carrots, potatoes, and bell pepper, and simmer uncovered for another 30 minutes, until the vegetables are tender and the stew has thickened.
+6. Season with salt and pepper.
+7. Serve hot, topped with a dollop of sour cream and fresh parsley.
