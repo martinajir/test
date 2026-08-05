@@ -6,58 +6,77 @@ Public test repo used for experimenting with GitHub Copilot workflows and sandbo
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
 
-## Recipe: Corn Chowder
+## Recipe Repository
 
-A simple, hearty corn chowder.
+This repo includes a small recipe repository app: a REST API backed by a SQLite
+database, instead of recipes hard-coded in this README.
 
-### Ingredients
+- **Database**: SQLite, accessed via Node's built-in [`node:sqlite`](https://nodejs.org/api/sqlite.html) module (no native build step required). The database file lives at `data/recipes.db` (git-ignored).
+- **Schema**: a `recipes` table, plus related `ingredients` and `instructions` tables (one row per ingredient/step), linked by `recipe_id`.
+- **API**: Express-based REST API for CRUD operations on recipes.
 
-- 4 slices bacon, chopped (optional)
-- 1 tablespoon butter
-- 1 onion, diced
-- 2 stalks celery, diced
-- 2 cloves garlic, minced
-- 1 lb potatoes, peeled and diced
-- 4 cups corn kernels (fresh, frozen, or canned)
-- 4 cups chicken or vegetable broth
-- 1 cup heavy cream or whole milk
-- Salt and pepper, to taste
-- Chopped chives or parsley, for garnish
+### Requirements
 
-### Instructions
+- Node.js 22.5+ (for built-in `node:sqlite` support)
 
-1. In a large pot over medium heat, cook the bacon until crisp. Remove and set aside, leaving the fat in the pot (or melt the butter if skipping bacon).
-2. Add the onion and celery, and sauté until softened, about 5 minutes.
-3. Stir in the garlic and cook for 1 minute more.
-4. Add the potatoes, corn, and broth. Bring to a boil, then reduce heat and simmer until the potatoes are tender, about 15–20 minutes.
-5. Use an immersion blender to purée about a third of the soup for a creamier texture, or mash some potatoes and corn against the side of the pot.
-6. Stir in the cream (or milk), and season with salt and pepper. Simmer for another 5 minutes.
-7. Serve hot, topped with the reserved bacon and chopped chives or parsley.
+### Setup
 
-## Recipe: Borscht
+```bash
+npm install
+npm run setup   # creates the DB schema and seeds it with the starter recipes
+npm start        # starts the API on http://localhost:3000 (set PORT to change)
+```
 
-A classic Ukrainian beet soup, served hot or cold.
+You can also run the steps individually:
 
-### Ingredients
+```bash
+npm run migrate  # create/update the database schema
+npm run seed     # seed the starter recipes (Corn Chowder, Borscht)
+```
 
-- 1 tablespoon oil or butter
-- 1 onion, diced
-- 2 carrots, grated
-- 3 medium beets, peeled and grated
-- 2 potatoes, peeled and diced
-- 1/4 head cabbage, shredded
-- 2 cloves garlic, minced
-- 6 cups beef, vegetable, or chicken broth
-- 1 tablespoon tomato paste
-- 1 tablespoon vinegar or lemon juice
-- Salt and pepper, to taste
-- Sour cream and fresh dill, for garnish
+### API
 
-### Instructions
+| Method | Path            | Description                          |
+|--------|-----------------|--------------------------------------|
+| GET    | `/health`       | Health check                         |
+| GET    | `/recipes`      | List all recipes                     |
+| GET    | `/recipes/:id`  | Get one recipe with ingredients/steps|
+| POST   | `/recipes`      | Create a recipe                      |
+| PUT    | `/recipes/:id`  | Update a recipe                      |
+| DELETE | `/recipes/:id`  | Delete a recipe                      |
 
-1. Heat the oil in a large pot over medium heat. Sauté the onion and carrots until softened, about 5 minutes.
-2. Add the grated beets and tomato paste, stirring to combine, and cook for another 5 minutes.
-3. Pour in the broth and bring to a boil. Add the potatoes and simmer until nearly tender, about 10 minutes.
-4. Stir in the cabbage and garlic, and simmer until the vegetables are fully tender, about 10 more minutes.
-5. Stir in the vinegar or lemon juice, and season with salt and pepper.
-6. Serve hot or chilled, topped with a dollop of sour cream and fresh dill.
+Example request body for `POST`/`PUT`:
+
+```json
+{
+  "title": "Tomato Soup",
+  "description": "Simple tomato soup",
+  "ingredients": ["2 cans tomatoes", "1 onion, diced"],
+  "instructions": ["Simmer everything", "Blend and serve"]
+}
+```
+
+### Tests
+
+```bash
+npm test
+```
+
+Tests run against an isolated in-memory SQLite database, so they never touch
+`data/recipes.db`.
+
+### Project layout
+
+```
+src/
+  db/            SQLite connection, schema, and recipes data-access layer
+  routes/        Express routes
+  app.js         Express app factory
+  server.js      Entry point (creates DB, runs app)
+scripts/
+  migrate.js     Creates/updates the database schema
+  seed.js        Seeds the starter recipes
+test/
+  recipes.test.js  API tests (node:test + node:sqlite in-memory)
+data/            SQLite database file (git-ignored)
+```
