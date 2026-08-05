@@ -1,9 +1,8 @@
 {
   "name": "recipe-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
   "description": "A simple recipe collection app backed by a SQLite database.",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "seed": "node db/seed.js",
