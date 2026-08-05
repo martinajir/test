@@ -6,6 +6,30 @@ Public test repo used for experimenting with GitHub Copilot workflows and sandbo
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
 
+## Recipe Collection App
+
+The `recipe-app/` directory contains a small Node.js + Express app backed by a
+SQLite database (via `better-sqlite3`) for storing and browsing recipes. It
+comes pre-seeded with the Corn Chowder and Borscht recipes below.
+
+```bash
+cd recipe-app
+npm install
+npm run seed   # populate the database with starter recipes
+npm start      # runs on http://localhost:3000
+```
+
+Open `http://localhost:3000` in a browser to view, add, and delete recipes,
+or use the REST API directly:
+
+- `GET /api/recipes` - list all recipes
+- `GET /api/recipes/:id` - get one recipe
+- `POST /api/recipes` - create a recipe (`{ title, ingredients, instructions }`)
+- `PUT /api/recipes/:id` - update a recipe
+- `DELETE /api/recipes/:id` - delete a recipe
+
+Run `npm test` inside `recipe-app/` to run the API test suite.
+
 ## Recipe: Corn Chowder
 
 A simple, hearty corn chowder.
