@@ -1,0 +1,5 @@
+# SQLite database files are generated locally; keep the repo storing only
+# schema + seed logic, not a binary DB blob.
+recipes/recipes.db
+__pycache__/
+*.pyc
