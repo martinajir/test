@@ -5,7 +5,7 @@ A classic Ukrainian beet soup, served hot or cold.
 - **Servings:** 6
 - **Prep time:** 20 minutes
 - **Cook time:** 40 minutes
-- **Tags:** soup, vegetarian-optional, ukrainian
+- **Tags:** soup, vegetarian-optional
 
 ## Ingredients
 

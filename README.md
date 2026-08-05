@@ -6,12 +6,19 @@ Public test repo used for experimenting with GitHub Copilot workflows and sandbo
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior. It doubles as a small recipe repository.
 
-## Recipes
+## Recipes by cuisine
+
+### American
 
 | Recipe | Tags |
 | --- | --- |
-| [Borscht](recipes/borscht.md) | soup, vegetarian-optional, ukrainian |
-| [Corn Chowder](recipes/corn-chowder.md) | soup, vegetarian-optional, comfort-food |
+| [Corn Chowder](recipes/american/corn-chowder.md) | soup, vegetarian-optional, comfort-food |
+
+### Ukrainian
+
+| Recipe | Tags |
+| --- | --- |
+| [Borscht](recipes/ukrainian/borscht.md) | soup, vegetarian-optional |
 
 ## Adding a recipe
 
