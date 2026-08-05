@@ -61,3 +61,26 @@ A classic Ukrainian beet soup, served hot or cold.
 4. Stir in the cabbage and garlic, and simmer until the vegetables are fully tender, about 10 more minutes.
 5. Stir in the vinegar or lemon juice, and season with salt and pepper.
 6. Serve hot or chilled, topped with a dollop of sour cream and fresh dill.
+
+## Recipe: Spaghetti Carbonara
+
+A classic Roman pasta dish with eggs, cheese, and pancetta.
+
+### Ingredients
+
+- 1 lb spaghetti
+- 8 oz pancetta or guanciale, diced
+- 4 large eggs
+- 1 cup grated Pecorino Romano (plus extra for serving)
+- 1/2 cup grated Parmesan
+- Freshly ground black pepper, to taste
+- Salt, for pasta water
+
+### Instructions
+
+1. Bring a large pot of salted water to a boil and cook the spaghetti until al dente. Reserve 1 cup of pasta water before draining.
+2. While the pasta cooks, sauté the pancetta in a large skillet over medium heat until crisp and golden.
+3. In a bowl, whisk together the eggs, Pecorino Romano, Parmesan, and a generous amount of black pepper.
+4. Add the drained pasta to the skillet with the pancetta, off the heat, and toss to coat in the rendered fat.
+5. Quickly pour in the egg and cheese mixture, tossing constantly, adding splashes of reserved pasta water as needed to create a creamy sauce (the residual heat cooks the eggs without scrambling them).
+6. Serve immediately, topped with extra cheese and black pepper.
