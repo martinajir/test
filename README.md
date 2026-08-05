@@ -84,3 +84,33 @@ A classic Roman pasta dish with eggs, cheese, and pancetta.
 4. Add the drained pasta to the skillet with the pancetta, off the heat, and toss to coat in the rendered fat.
 5. Quickly pour in the egg and cheese mixture, tossing constantly, adding splashes of reserved pasta water as needed to create a creamy sauce (the residual heat cooks the eggs without scrambling them).
 6. Serve immediately, topped with extra cheese and black pepper.
+
+## Recipe: Thai Green Curry
+
+An aromatic, spicy Thai curry with coconut milk and vegetables.
+
+### Ingredients
+
+- 2 tablespoons vegetable oil
+- 3 tablespoons Thai green curry paste
+- 1 can (14 oz) coconut milk
+- 1 lb chicken thighs, sliced (or tofu for a vegetarian version)
+- 1 cup bamboo shoots, sliced
+- 1 red bell pepper, sliced
+- 1 cup Thai eggplant or zucchini, cut into chunks
+- 2 tablespoons fish sauce (or soy sauce)
+- 1 tablespoon brown sugar or palm sugar
+- 4 kaffir lime leaves, torn (optional)
+- A handful of Thai basil leaves
+- 1 red chili, sliced, for garnish
+- Cooked jasmine rice, for serving
+
+### Instructions
+
+1. Heat the oil in a large pan or wok over medium heat. Add the curry paste and fry for 1-2 minutes until fragrant.
+2. Add about a third of the coconut milk and stir until it separates and the oil starts to glisten on top.
+3. Add the chicken and cook until it starts to turn opaque, about 5 minutes.
+4. Stir in the remaining coconut milk, bamboo shoots, bell pepper, and eggplant or zucchini. Bring to a gentle simmer.
+5. Add the fish sauce, sugar, and kaffir lime leaves. Simmer until the chicken is cooked through and the vegetables are tender, about 10 minutes.
+6. Stir in the Thai basil leaves just before serving.
+7. Serve hot over jasmine rice, garnished with sliced red chili.
