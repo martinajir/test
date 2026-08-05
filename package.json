@@ -1,0 +1,19 @@
+{
+  "name": "recipe-repository",
+  "version": "1.0.0",
+  "description": "A simple recipe repository API backed by SQLite",
+  "type": "commonjs",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "seed": "node db/seed.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

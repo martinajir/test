@@ -6,6 +6,43 @@ Public test repo used for experimenting with GitHub Copilot workflows and sandbo
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
 
+## Recipe Repository API
+
+A small Node.js + Express app that stores recipes in a SQLite database (using
+Node's built-in `node:sqlite` module — no native dependencies to compile).
+
+### Setup
+
+```bash
+npm install
+npm start        # starts the API on http://localhost:3000 (seeds the DB on first run)
+npm test         # runs the test suite
+```
+
+### Endpoints
+
+| Method | Path            | Description                |
+| ------ | --------------- | -------------------------- |
+| GET    | `/recipes`      | List all recipes           |
+| GET    | `/recipes/:id`  | Get a single recipe         |
+| POST   | `/recipes`      | Create a recipe             |
+| PUT    | `/recipes/:id`  | Update a recipe             |
+| DELETE | `/recipes/:id`  | Delete a recipe             |
+
+A recipe looks like:
+
+```json
+{
+  "title": "Pancakes",
+  "description": "Fluffy breakfast pancakes",
+  "ingredients": ["flour", "milk", "eggs"],
+  "instructions": ["Mix", "Cook", "Serve"]
+}
+```
+
+The database file is created at `data/recipes.db` on first run and seeded
+with the Corn Chowder and Borscht recipes documented below.
+
 ## Recipe: Corn Chowder
 
 A simple, hearty corn chowder.
