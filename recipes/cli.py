@@ -14,7 +14,6 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import sqlite3
 import sys
 
 from recipes import db
@@ -22,7 +21,7 @@ from recipes import db
 
 def cmd_init(args: argparse.Namespace) -> None:
     db.init_db()
-    print(f"Initialized database at {db.DEFAULT_DB_PATH}")
+    print(f"Initialized DynamoDB table '{db._table_name()}' in region '{db._region_name()}'.")
 
 
 def cmd_seed(args: argparse.Namespace) -> None:
@@ -106,7 +105,7 @@ def cmd_seed(args: argparse.Namespace) -> None:
                 description=recipe["description"],
             )
             added += 1
-        except sqlite3.IntegrityError:
+        except db.RecipeAlreadyExistsError:
             skipped += 1
 
     print(f"Seeded {added} recipe(s); skipped {skipped} already present.")
@@ -147,7 +146,7 @@ def cmd_add(args: argparse.Namespace) -> None:
             args.step or [],
             description=args.description or "",
         )
-    except sqlite3.IntegrityError:
+    except db.RecipeAlreadyExistsError:
         print(f"A recipe titled '{args.title}' already exists.", file=sys.stderr)
         sys.exit(1)
     print(f"Added recipe '{args.title}'.")

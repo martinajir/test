@@ -1,37 +1,82 @@
-"""Database helpers for the recipe repository.
+"""DynamoDB data-access layer for the recipe repository.
 
-Provides a thin wrapper around a SQLite database so the CLI (and any
-future tooling) can create, seed, and query recipes without duplicating
-connection/schema logic.
+Recipes are stored in a single DynamoDB table keyed by recipe title
+(partition key). Ingredients and instructions are stored as ordered
+list-of-string attributes directly on the item, since DynamoDB has no
+notion of separate relational tables.
+
+Configuration is entirely via environment variables so no credentials or
+endpoints are hardcoded:
+
+- ``RECIPES_TABLE_NAME`` - DynamoDB table name (default: ``Recipes``).
+- ``AWS_REGION`` / ``AWS_DEFAULT_REGION`` - AWS region (default: ``us-east-1``).
+- ``DYNAMODB_ENDPOINT_URL`` - optional override, e.g. ``http://localhost:8000``
+  for local development against DynamoDB Local, or a moto server in tests.
+
+AWS credentials are resolved via boto3's standard credential chain
+(environment variables, shared config/credentials file, IAM role, etc.).
 """
 
 from __future__ import annotations
 
-import sqlite3
-from pathlib import Path
+import os
 
-BASE_DIR = Path(__file__).resolve().parent
-DEFAULT_DB_PATH = BASE_DIR / "recipes.db"
-SCHEMA_PATH = BASE_DIR / "schema.sql"
+import boto3
+from botocore.exceptions import ClientError
 
-
-def get_connection(db_path: Path | str = DEFAULT_DB_PATH) -> sqlite3.Connection:
-    """Open a SQLite connection with sane defaults."""
-    conn = sqlite3.connect(db_path)
-    conn.execute("PRAGMA foreign_keys = ON")
-    conn.row_factory = sqlite3.Row
-    return conn
+DEFAULT_TABLE_NAME = "Recipes"
 
 
-def init_db(db_path: Path | str = DEFAULT_DB_PATH) -> None:
-    """Create the database schema if it doesn't already exist."""
-    conn = get_connection(db_path)
+class RecipeAlreadyExistsError(Exception):
+    """Raised when attempting to add a recipe whose title already exists."""
+
+
+def _table_name() -> str:
+    return os.environ.get("RECIPES_TABLE_NAME", DEFAULT_TABLE_NAME)
+
+
+def _region_name() -> str:
+    return os.environ.get("AWS_REGION") or os.environ.get("AWS_DEFAULT_REGION") or "us-east-1"
+
+
+def get_resource():
+    """Return a boto3 DynamoDB resource, honoring local-endpoint overrides."""
+    kwargs = {"region_name": _region_name()}
+    endpoint_url = os.environ.get("DYNAMODB_ENDPOINT_URL")
+    if endpoint_url:
+        kwargs["endpoint_url"] = endpoint_url
+    return boto3.resource("dynamodb", **kwargs)
+
+
+def get_table(table_name: str | None = None):
+    resource = get_resource()
+    return resource.Table(table_name or _table_name())
+
+
+def init_db(table_name: str | None = None) -> None:
+    """Create the DynamoDB table if it doesn't already exist.
+
+    Uses on-demand (PAY_PER_REQUEST) billing so no capacity planning is
+    required, and waits for the table to become ACTIVE before returning.
+    """
+    table_name = table_name or _table_name()
+    resource = get_resource()
+    client = resource.meta.client
+
     try:
-        with open(SCHEMA_PATH, "r", encoding="utf-8") as f:
-            conn.executescript(f.read())
-        conn.commit()
-    finally:
-        conn.close()
+        client.describe_table(TableName=table_name)
+        return  # Table already exists.
+    except ClientError as e:
+        if e.response["Error"]["Code"] != "ResourceNotFoundException":
+            raise
+
+    resource.create_table(
+        TableName=table_name,
+        KeySchema=[{"AttributeName": "title", "KeyType": "HASH"}],
+        AttributeDefinitions=[{"AttributeName": "title", "AttributeType": "S"}],
+        BillingMode="PAY_PER_REQUEST",
+    )
+    client.get_waiter("table_exists").wait(TableName=table_name)
 
 
 def add_recipe(
@@ -39,82 +84,57 @@ def add_recipe(
     ingredients: list[str],
     instructions: list[str],
     description: str = "",
-    db_path: Path | str = DEFAULT_DB_PATH,
-) -> int:
-    """Insert a recipe with its ingredients and instructions.
-
-    Returns the new recipe's id. Raises sqlite3.IntegrityError if a
-    recipe with the same title already exists.
-    """
-    conn = get_connection(db_path)
+    table_name: str | None = None,
+) -> None:
+    """Insert a recipe. Raises RecipeAlreadyExistsError on duplicate titles."""
+    table = get_table(table_name)
     try:
-        cur = conn.execute(
-            "INSERT INTO recipes (title, description) VALUES (?, ?)",
-            (title, description),
+        table.put_item(
+            Item={
+                "title": title,
+                "description": description,
+                "ingredients": ingredients,
+                "instructions": instructions,
+            },
+            ConditionExpression="attribute_not_exists(title)",
         )
-        recipe_id = cur.lastrowid
-
-        conn.executemany(
-            "INSERT INTO ingredients (recipe_id, position, text) VALUES (?, ?, ?)",
-            [(recipe_id, i, text) for i, text in enumerate(ingredients, start=1)],
-        )
-        conn.executemany(
-            "INSERT INTO instructions (recipe_id, step_number, text) VALUES (?, ?, ?)",
-            [(recipe_id, i, text) for i, text in enumerate(instructions, start=1)],
-        )
-        conn.commit()
-        return recipe_id
-    finally:
-        conn.close()
+    except ClientError as e:
+        if e.response["Error"]["Code"] == "ConditionalCheckFailedException":
+            raise RecipeAlreadyExistsError(
+                f"A recipe titled '{title}' already exists."
+            ) from e
+        raise
 
 
-def list_recipes(db_path: Path | str = DEFAULT_DB_PATH) -> list[sqlite3.Row]:
+def list_recipes(table_name: str | None = None) -> list[dict]:
     """Return all recipes ordered by title."""
-    conn = get_connection(db_path)
-    try:
-        return conn.execute("SELECT * FROM recipes ORDER BY title").fetchall()
-    finally:
-        conn.close()
+    table = get_table(table_name)
+    items: list[dict] = []
+    response = table.scan()
+    items.extend(response.get("Items", []))
+    while "LastEvaluatedKey" in response:
+        response = table.scan(ExclusiveStartKey=response["LastEvaluatedKey"])
+        items.extend(response.get("Items", []))
+    return sorted(items, key=lambda item: item["title"].lower())
 
 
-def get_recipe(title: str, db_path: Path | str = DEFAULT_DB_PATH) -> dict | None:
-    """Fetch a single recipe (with ingredients and instructions) by title."""
-    conn = get_connection(db_path)
-    try:
-        recipe = conn.execute(
-            "SELECT * FROM recipes WHERE title = ? COLLATE NOCASE", (title,)
-        ).fetchone()
-        if recipe is None:
-            return None
-
-        ingredients = conn.execute(
-            "SELECT text FROM ingredients WHERE recipe_id = ? ORDER BY position",
-            (recipe["id"],),
-        ).fetchall()
-        instructions = conn.execute(
-            "SELECT text FROM instructions WHERE recipe_id = ? ORDER BY step_number",
-            (recipe["id"],),
-        ).fetchall()
-
-        return {
-            "id": recipe["id"],
-            "title": recipe["title"],
-            "description": recipe["description"],
-            "ingredients": [row["text"] for row in ingredients],
-            "instructions": [row["text"] for row in instructions],
-        }
-    finally:
-        conn.close()
+def get_recipe(title: str, table_name: str | None = None) -> dict | None:
+    """Fetch a single recipe by exact title (case-sensitive)."""
+    table = get_table(table_name)
+    response = table.get_item(Key={"title": title})
+    item = response.get("Item")
+    if item is None:
+        return None
+    return {
+        "title": item["title"],
+        "description": item.get("description", ""),
+        "ingredients": list(item.get("ingredients", [])),
+        "instructions": list(item.get("instructions", [])),
+    }
 
 
-def delete_recipe(title: str, db_path: Path | str = DEFAULT_DB_PATH) -> bool:
-    """Delete a recipe by title. Returns True if a recipe was deleted."""
-    conn = get_connection(db_path)
-    try:
-        cur = conn.execute(
-            "DELETE FROM recipes WHERE title = ? COLLATE NOCASE", (title,)
-        )
-        conn.commit()
-        return cur.rowcount > 0
-    finally:
-        conn.close()
+def delete_recipe(title: str, table_name: str | None = None) -> bool:
+    """Delete a recipe by exact title. Returns True if a recipe was deleted."""
+    table = get_table(table_name)
+    response = table.delete_item(Key={"title": title}, ReturnValues="ALL_OLD")
+    return "Attributes" in response

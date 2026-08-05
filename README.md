@@ -8,23 +8,53 @@ This repository is a lightweight scratch space — not a production project. It'
 
 ## Recipe Database
 
-Recipes now live in a small SQLite-backed database instead of being hardcoded
-in this README. The database, schema, and CLI live under `recipes/`.
+Recipes live in **Amazon DynamoDB** instead of being hardcoded in this
+README. The data-access layer and CLI live under `recipes/`.
 
 ### Setup
 
-No external dependencies are required (Python 3.9+, stdlib only).
+Install the runtime dependency (`boto3`):
 
 ```bash
-# Create the database schema
+pip install -r requirements.txt
+```
+
+Configure AWS access via any of boto3's standard mechanisms — environment
+variables, a shared `~/.aws/credentials` profile, or an IAM role. No
+credentials are hardcoded anywhere in this repo.
+
+Optional environment variables:
+
+| Variable                 | Default     | Purpose                                   |
+|---------------------------|-------------|--------------------------------------------|
+| `RECIPES_TABLE_NAME`      | `Recipes`   | DynamoDB table name                        |
+| `AWS_REGION`              | `us-east-1` | AWS region (falls back to `AWS_DEFAULT_REGION`) |
+| `DYNAMODB_ENDPOINT_URL`   | (unset)     | Override endpoint, e.g. for DynamoDB Local  |
+
+```bash
+# Create the DynamoDB table (idempotent; on-demand billing, no capacity planning needed)
 python3 -m recipes.cli init
 
 # Load the starter recipes (Corn Chowder, Borscht)
 python3 -m recipes.cli seed
 ```
 
-This creates `recipes/recipes.db` (ignored by git — each environment builds
-its own local copy from the schema + seed data).
+The table uses `title` as its partition key; ingredients and instructions
+are stored as ordered list attributes on each item. Recipe title lookups
+(`show`, `add`, `delete`) are case-sensitive.
+
+### Local development without AWS
+
+You can point at [DynamoDB Local](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html)
+instead of a real AWS account:
+
+```bash
+docker run -d -p 8000:8000 amazon/dynamodb-local
+export DYNAMODB_ENDPOINT_URL=http://localhost:8000
+export AWS_ACCESS_KEY_ID=local
+export AWS_SECRET_ACCESS_KEY=local
+python3 -m recipes.cli init
+```
 
 ### Usage
 
@@ -50,15 +80,21 @@ python3 -m recipes.cli delete "Fried Rice"
 
 ### Schema
 
-- `recipes` — id, title (unique), description, created_at
-- `ingredients` — recipe_id, position, text
-- `instructions` — recipe_id, step_number, text
+Single DynamoDB table (default name `Recipes`):
 
-See `recipes/schema.sql` for the full schema and `recipes/db.py` for the
-Python data-access layer.
+- `title` (String, partition key)
+- `description` (String)
+- `ingredients` (List of String, ordered)
+- `instructions` (List of String, ordered)
+
+See `recipes/db.py` for the full data-access layer.
 
 ### Tests
 
+Tests use [moto](https://github.com/getmoto/moto) to mock DynamoDB, so no
+AWS account or network access is required:
+
 ```bash
+pip install -r requirements-dev.txt
 python3 -m unittest discover -s tests -v
 ```
