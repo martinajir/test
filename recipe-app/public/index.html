@@ -104,7 +104,7 @@
       return `
         <div class="card">
           <h2>${escapeHtml(r.title)}</h2>
-          <p class="meta">Added ${new Date(r.created_at + 'Z').toLocaleString()}</p>
+          <p class="meta">Added ${new Date(r.created_at).toLocaleString()}</p>
           <strong>Ingredients</strong>
           <ul>${r.ingredients.map((i) => `<li>${escapeHtml(i)}</li>`).join('')}</ul>
           <strong>Instructions</strong>

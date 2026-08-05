@@ -8,16 +8,31 @@ This repository is a lightweight scratch space — not a production project. It'
 
 ## Recipe Collection App
 
-The `recipe-app/` directory contains a small Node.js + Express app backed by a
-SQLite database (via `better-sqlite3`) for storing and browsing recipes. It
+The `recipe-app/` directory contains a small Node.js + Express app backed by
+**AWS DynamoDB** (via the AWS SDK v3) for storing and browsing recipes. It
 comes pre-seeded with the Corn Chowder and Borscht recipes below.
+
+By default it points at a local DynamoDB endpoint for easy dev/testing
+(e.g. [DynamoDB Local](https://hub.docker.com/r/amazon/dynamodb-local) via
+Docker), but it works against a real AWS account too - just unset
+`DYNAMODB_ENDPOINT` and provide real AWS credentials.
 
 ```bash
 cd recipe-app
 npm install
-npm run seed   # populate the database with starter recipes
-npm start      # runs on http://localhost:3000
+
+# Point at a local DynamoDB (e.g. `docker run -p 8000:8000 amazon/dynamodb-local`)
+export DYNAMODB_ENDPOINT=http://localhost:8000
+export AWS_REGION=us-east-1
+
+npm run setup-table   # creates the Recipes table if it doesn't exist
+npm run seed          # populate the table with starter recipes
+npm start             # runs on http://localhost:3000
 ```
+
+To use a real AWS account instead, unset `DYNAMODB_ENDPOINT` and set
+`AWS_REGION` plus your usual AWS credentials (env vars, shared config, or IAM
+role). Set `RECIPES_TABLE_NAME` to override the table name (default `Recipes`).
 
 Open `http://localhost:3000` in a browser to view, add, and delete recipes,
 or use the REST API directly:

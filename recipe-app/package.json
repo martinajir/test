@@ -1,19 +1,29 @@
 {
   "name": "recipe-app",
   "version": "1.0.0",
-  "description": "A simple recipe collection app backed by a SQLite database.",
+  "description": "A simple recipe collection app backed by AWS DynamoDB.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "setup-table": "node db/setupTable.js",
     "seed": "node db/seed.js",
     "test": "node test/api.test.js"
   },
-  "keywords": ["recipes", "sqlite", "express"],
+  "keywords": [
+    "recipes",
+    "dynamodb",
+    "aws",
+    "express"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "better-sqlite3": "^13.0.3",
+    "@aws-sdk/client-dynamodb": "^3.1103.0",
+    "@aws-sdk/lib-dynamodb": "^3.1103.0",
     "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "aws-sdk-client-mock": "^4.1.0"
   }
 }
