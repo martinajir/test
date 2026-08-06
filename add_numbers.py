@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Simple script that adds two numbers together."""
+"""Simple script that adds or divides two numbers."""
 
 import sys
 
@@ -9,14 +9,39 @@ def add(a, b):
     return a + b
 
 
+def divide(a, b):
+    """Return the quotient of a and b.
+
+    Raises:
+        ZeroDivisionError: If b is 0.
+    """
+    if b == 0:
+        raise ZeroDivisionError("division by zero")
+    return a / b
+
+
 def main():
-    if len(sys.argv) == 3:
-        a, b = float(sys.argv[1]), float(sys.argv[2])
+    args = sys.argv[1:]
+    operation = "add"
+
+    if args and args[0] in ("add", "divide"):
+        operation = args[0]
+        args = args[1:]
+
+    if len(args) == 2:
+        a, b = float(args[0]), float(args[1])
     else:
         a = float(input("Enter the first number: "))
         b = float(input("Enter the second number: "))
 
-    print(f"The sum of {a} and {b} is {add(a, b)}")
+    if operation == "divide":
+        try:
+            print(f"{a} divided by {b} is {divide(a, b)}")
+        except ZeroDivisionError:
+            print("Error: cannot divide by zero")
+            sys.exit(1)
+    else:
+        print(f"The sum of {a} and {b} is {add(a, b)}")
 
 
 if __name__ == "__main__":
