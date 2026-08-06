@@ -6,6 +6,8 @@ Public test repo used for experimenting with GitHub Copilot workflows and sandbo
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
 
+See [DEVELOPER.md](DEVELOPER.md) for contributor guidelines.
+
 ## Recipe: Corn Chowder
 
 A simple, hearty corn chowder.
