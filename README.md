@@ -61,3 +61,26 @@ A classic Ukrainian beet soup, served hot or cold.
 4. Stir in the cabbage and garlic, and simmer until the vegetables are fully tender, about 10 more minutes.
 5. Stir in the vinegar or lemon juice, and season with salt and pepper.
 6. Serve hot or chilled, topped with a dollop of sour cream and fresh dill.
+
+## Recipe: Classic Guacamole
+
+A simple, fresh guacamole.
+
+### Ingredients
+
+- 3 ripe avocados
+- 1/2 small onion, finely diced
+- 1 clove garlic, minced
+- 1 small tomato, diced
+- 1 jalapeno, seeded and minced (optional)
+- 2 tablespoons fresh cilantro, chopped
+- 1 lime, juiced
+- Salt, to taste
+
+### Instructions
+
+1. Halve and pit the avocados, then scoop the flesh into a bowl.
+2. Mash the avocados to your desired consistency, chunky or smooth.
+3. Stir in the onion, garlic, tomato, jalapeno, and cilantro.
+4. Add the lime juice and season with salt to taste.
+5. Serve immediately with tortilla chips, or press plastic wrap directly onto the surface to store.
