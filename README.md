@@ -35,7 +35,13 @@ PORT=3000 julia --project=. server.jl
 
 - `GET /` - plain text welcome message
 - `GET /health` - JSON health check (`{"status":"ok"}`)
-- `GET /jokes` - a random pirate joke from `pirate-jokes.txt`, as JSON
+- `GET /jokes` - a random pirate joke, as JSON
+- `POST /jokes` - add a new joke. Body: `{"joke": "..."}`
+- `GET /recipes` - all recipes (seeded from this README, plus any added), as JSON
+- `GET /recipes/{name}` - a single recipe by name (case-insensitive), as JSON. 404 if not found
+- `POST /recipes` - add or replace a recipe. Body: `{"name": "...", "ingredients": [...], "instructions": [...]}`
+
+Recipes and jokes added via `POST` are kept in memory only and reset when the server restarts.
 
 ### Example
 
@@ -43,6 +49,16 @@ PORT=3000 julia --project=. server.jl
 curl http://localhost:8080/
 curl http://localhost:8080/health
 curl http://localhost:8080/jokes
+curl http://localhost:8080/recipes
+curl http://localhost:8080/recipes/Borscht
+
+curl -X POST http://localhost:8080/jokes \
+  -H 'Content-Type: application/json' \
+  -d '{"joke": "Why did the pirate go to school? To improve his arrrticulation."}'
+
+curl -X POST http://localhost:8080/recipes \
+  -H 'Content-Type: application/json' \
+  -d '{"name": "Ratatouille", "ingredients": ["eggplant", "zucchini", "tomato"], "instructions": ["Chop vegetables.", "Simmer until tender."]}'
 ```
 
 ## Recipe: Corn Chowder
