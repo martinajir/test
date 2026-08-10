@@ -40,6 +40,8 @@ PORT=3000 julia --project=. server.jl
 - `GET /recipes` - all recipes (seeded from this README, plus any added), as JSON
 - `GET /recipes/{name}` - a single recipe by name (case-insensitive), as JSON. 404 if not found
 - `POST /recipes` - add or replace a recipe. Body: `{"name": "...", "ingredients": [...], "instructions": [...]}`
+- `DELETE /recipes/{name}` - delete a recipe by name (case-insensitive). 204 on success, 404 if not found
+- `DELETE /jokes/{index}` - delete the joke at the given 0-based index. 204 on success, 400 for a non-integer index, 404 if out of range
 
 Recipes and jokes added via `POST` are kept in memory only and reset when the server restarts.
 
@@ -59,6 +61,9 @@ curl -X POST http://localhost:8080/jokes \
 curl -X POST http://localhost:8080/recipes \
   -H 'Content-Type: application/json' \
   -d '{"name": "Ratatouille", "ingredients": ["eggplant", "zucchini", "tomato"], "instructions": ["Chop vegetables.", "Simmer until tender."]}'
+
+curl -X DELETE http://localhost:8080/recipes/Ratatouille
+curl -X DELETE http://localhost:8080/jokes/0
 ```
 
 ## Recipe: Corn Chowder

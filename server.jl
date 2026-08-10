@@ -6,10 +6,12 @@ Endpoints:
   GET  /health         -> JSON health check, e.g. {"status":"ok"}
   GET  /jokes          -> a random pirate joke as JSON
   POST /jokes          -> add a new joke, body: {"joke": "..."}
+  DELETE /jokes/{index} -> delete the joke at the given 0-based index
   GET  /recipes        -> all recipes (from README.md plus any added) as JSON
   GET  /recipes/{name} -> a single recipe by name (case-insensitive) as JSON
   POST /recipes        -> add a new recipe, body:
                            {"name": "...", "ingredients": [...], "instructions": [...]}
+  DELETE /recipes/{name} -> delete the recipe with the given name (case-insensitive)
 
 Run with:
     julia --project=. server.jl
@@ -175,6 +177,42 @@ function handle_post_recipes(req::HTTP.Request)
     return json_response(201, recipe)
 end
 
+function handle_delete_recipe(::HTTP.Request, name::AbstractString)
+    decoded = HTTP.URIs.unescapeuri(name)
+    found = lock(STATE_LOCK) do
+        idx = findfirst(r -> lowercase(r["name"]) == lowercase(decoded), RECIPES)
+        if idx === nothing
+            false
+        else
+            deleteat!(RECIPES, idx)
+            true
+        end
+    end
+    if !found
+        return json_response(404, Dict("error" => "recipe not found: $decoded"))
+    end
+    return HTTP.Response(204)
+end
+
+function handle_delete_joke(::HTTP.Request, index_str::AbstractString)
+    index = tryparse(Int, index_str)
+    if index === nothing
+        return json_response(400, Dict("error" => "expected an integer index, got: $index_str"))
+    end
+    found = lock(STATE_LOCK) do
+        if index < 0 || index >= length(JOKES)
+            false
+        else
+            deleteat!(JOKES, index + 1)  # index is 0-based, JOKES is 1-based
+            true
+        end
+    end
+    if !found
+        return json_response(404, Dict("error" => "joke index out of range: $index"))
+    end
+    return HTTP.Response(204)
+end
+
 function handle_not_found(::HTTP.Request)
     return json_response(404, Dict("error" => "not found"))
 end
@@ -191,10 +229,16 @@ function router(req::HTTP.Request)
         return handle_get_jokes(req)
     elseif method == "POST" && path == "/jokes"
         return handle_post_jokes(req)
+    elseif method == "DELETE" && startswith(path, "/jokes/")
+        index_str = path[length("/jokes/")+1:end]
+        return handle_delete_joke(req, index_str)
     elseif method == "GET" && path == "/recipes"
         return handle_get_recipes(req)
     elseif method == "POST" && path == "/recipes"
         return handle_post_recipes(req)
+    elseif method == "DELETE" && startswith(path, "/recipes/")
+        name = path[length("/recipes/")+1:end]
+        return handle_delete_recipe(req, name)
     elseif method == "GET" && startswith(path, "/recipes/")
         name = path[length("/recipes/")+1:end]
         return handle_get_recipe(req, name)
