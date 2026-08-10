@@ -6,6 +6,23 @@ Public test repo used for experimenting with GitHub Copilot workflows and sandbo
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
 
+## Web Server
+
+A simple Flask web server (`app.py`) is included, wrapping some of the repo's existing content:
+
+- `GET /` — homepage listing available endpoints
+- `GET /add?a=1&b=2` — adds two numbers using `add_numbers.py`
+- `GET /joke` — returns a random pirate joke from `pirate-jokes.txt`
+
+### Running it
+
+```bash
+pip install -r requirements.txt
+python app.py
+```
+
+The server runs at `http://localhost:5000`.
+
 ## Recipe: Corn Chowder
 
 A simple, hearty corn chowder.
