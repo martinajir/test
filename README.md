@@ -6,6 +6,30 @@ Public test repo used for experimenting with GitHub Copilot workflows and sandbo
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
 
+## Java Web Server
+
+This repo includes a minimal Java web server (`src/main/java/com/example/webserver/App.java`) built with the JDK's built-in `HttpServer`, so it has no external dependencies. It exposes:
+
+- `GET /` - returns a plain text greeting
+- `GET /health` - returns `OK`, useful as a health check
+
+### Build and run with Maven
+
+```bash
+mvn package
+java -jar target/webserver.jar
+```
+
+### Build and run with plain javac/java (no Maven required)
+
+```bash
+mkdir -p target/classes
+javac -d target/classes src/main/java/com/example/webserver/App.java
+java -cp target/classes com.example.webserver.App
+```
+
+The server listens on port `8080` by default. Set the `PORT` environment variable to use a different port.
+
 ## Recipe: Corn Chowder
 
 A simple, hearty corn chowder.
