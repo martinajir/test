@@ -6,6 +6,42 @@ Public test repo used for experimenting with GitHub Copilot workflows and sandbo
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
 
+## Julia Web Server
+
+A simple web server built with [HTTP.jl](https://github.com/JuliaWeb/HTTP.jl).
+
+### Setup
+
+Requires Julia 1.9+.
+
+```bash
+julia --project=. -e 'import Pkg; Pkg.instantiate()'
+```
+
+### Run
+
+```bash
+julia --project=. server.jl
+```
+
+The server listens on `http://localhost:8080` by default (set the `PORT` env var to change it).
+
+### Endpoints
+
+| Method | Path                | Description                          |
+|--------|---------------------|---------------------------------------|
+| GET    | `/`                 | Welcome page listing available routes |
+| GET    | `/health`           | Health check, returns `{"status":"ok"}` |
+| GET    | `/jokes`            | Returns a random pirate joke as JSON  |
+| GET    | `/add?a=1&b=2`      | Adds two numbers and returns the sum   |
+
+Example:
+
+```bash
+curl http://localhost:8080/jokes
+curl "http://localhost:8080/add?a=2&b=3"
+```
+
 ## Recipe: Corn Chowder
 
 A simple, hearty corn chowder.
