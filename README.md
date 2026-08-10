@@ -8,18 +8,17 @@ This repository is a lightweight scratch space — not a production project. It'
 
 ## Web Server
 
-This repo includes a simple Flask web server (`app.py`) exposing:
+This repo includes a simple Node.js web server (`server.js`), using only Node's built-in `http` module (no external dependencies) exposing:
 
 - `GET /` — home page listing available endpoints
 - `GET /joke` — returns a random pirate joke from `pirate-jokes.txt`
-- `GET /add?a=<num>&b=<num>` — adds two numbers using the logic from `add_numbers.py`
+- `GET /add?a=<num>&b=<num>` — adds two numbers
 - `GET /healthz` — health check
 
 ### Running it
 
 ```bash
-pip install -r requirements.txt
-python3 app.py
+node server.js
 ```
 
 The server starts on `http://localhost:5000`.
