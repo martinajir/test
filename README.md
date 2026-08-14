@@ -15,6 +15,12 @@ A running list of animals:
 - Red panda
 - Octopus
 - Peregrine falcon
+- Bald eagle
+- Toucan
+- Emperor penguin
+- Ostrich
+- Hummingbird
+- Great horned owl
 
 ## Recipe: Corn Chowder
 
