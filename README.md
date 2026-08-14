@@ -12,14 +12,14 @@ A simple, hearty corn chowder.
 
 ### 🛒 Ingredients
 
-- 4 slices bacon, chopped (optional)
+- 4 slices bacon 🐷, chopped (optional)
 - 1 tablespoon butter
 - 1 onion, diced
 - 2 stalks celery, diced
 - 2 cloves garlic, minced
 - 1 lb potatoes, peeled and diced
 - 4 cups corn kernels (fresh, frozen, or canned)
-- 4 cups chicken or vegetable broth
+- 4 cups chicken 🐔 or vegetable broth
 - 1 cup heavy cream or whole milk
 - Salt and pepper, to taste
 - Chopped chives or parsley, for garnish
@@ -47,7 +47,7 @@ A classic Ukrainian beet soup, served hot or cold.
 - 2 potatoes, peeled and diced
 - 1/4 head cabbage, shredded
 - 2 cloves garlic, minced
-- 6 cups beef, vegetable, or chicken broth
+- 6 cups beef 🐄, vegetable, or chicken 🐔 broth
 - 1 tablespoon tomato paste
 - 1 tablespoon vinegar or lemon juice
 - Salt and pepper, to taste
