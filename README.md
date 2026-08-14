@@ -2,15 +2,15 @@
 
 Public test repo used for experimenting with GitHub Copilot workflows and sandbox tooling. 🦝
 
-## ℹ️ About
+## ℹ️ About 🦝
 
-This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
+This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior. 🦝
 
 ## 🌽 Recipe: Corn Chowder 🦝
 
 A simple, hearty corn chowder. (Keep it away from raccoons 🦝 — they love corn too!)
 
-### 🛒 Ingredients
+### 🛒 Ingredients 🦝
 
 - 4 slices bacon 🐷, chopped (optional)
 - 1 tablespoon butter
@@ -32,7 +32,7 @@ A simple, hearty corn chowder. (Keep it away from raccoons 🦝 — they love co
 4. Add the potatoes, corn, and broth. Bring to a boil, then reduce heat and simmer until the potatoes are tender, about 15–20 minutes.
 5. Use an immersion blender to purée about a third of the soup for a creamier texture, or mash some potatoes and corn against the side of the pot.
 6. Stir in the cream (or milk), and season with salt and pepper. Simmer for another 5 minutes.
-7. Serve hot, topped with the reserved bacon and chopped chives or parsley.
+7. Serve hot, topped with the reserved bacon and chopped chives or parsley. 🦝
 
 ## 🍲 Recipe: Borscht 🦝
 
@@ -60,6 +60,6 @@ A classic Ukrainian beet soup, served hot or cold. Raccoon 🦝 not included.
 3. Pour in the broth and bring to a boil. Add the potatoes and simmer until nearly tender, about 10 minutes.
 4. Stir in the cabbage and garlic, and simmer until the vegetables are fully tender, about 10 more minutes.
 5. Stir in the vinegar or lemon juice, and season with salt and pepper.
-6. Serve hot or chilled, topped with a dollop of sour cream and fresh dill.
+6. Serve hot or chilled, topped with a dollop of sour cream and fresh dill. 🦝
 
-🦝🦝🦝
+🦝🦝🦝🦝🦝
