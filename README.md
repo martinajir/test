@@ -1,14 +1,14 @@
-# 🧪 test
+# 🧪 test 🦝
 
-Public test repo used for experimenting with GitHub Copilot workflows and sandbox tooling.
+Public test repo used for experimenting with GitHub Copilot workflows and sandbox tooling. 🦝
 
 ## ℹ️ About
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
 
-## 🌽 Recipe: Corn Chowder
+## 🌽 Recipe: Corn Chowder 🦝
 
-A simple, hearty corn chowder.
+A simple, hearty corn chowder. (Keep it away from raccoons 🦝 — they love corn too!)
 
 ### 🛒 Ingredients
 
@@ -34,9 +34,9 @@ A simple, hearty corn chowder.
 6. Stir in the cream (or milk), and season with salt and pepper. Simmer for another 5 minutes.
 7. Serve hot, topped with the reserved bacon and chopped chives or parsley.
 
-## 🍲 Recipe: Borscht
+## 🍲 Recipe: Borscht 🦝
 
-A classic Ukrainian beet soup, served hot or cold.
+A classic Ukrainian beet soup, served hot or cold. Raccoon 🦝 not included.
 
 ### 🛒 Ingredients
 
@@ -61,3 +61,5 @@ A classic Ukrainian beet soup, served hot or cold.
 4. Stir in the cabbage and garlic, and simmer until the vegetables are fully tender, about 10 more minutes.
 5. Stir in the vinegar or lemon juice, and season with salt and pepper.
 6. Serve hot or chilled, topped with a dollop of sour cream and fresh dill.
+
+🦝🦝🦝
