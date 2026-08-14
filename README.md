@@ -21,6 +21,12 @@ A running list of animals:
 - Ostrich
 - Hummingbird
 - Great horned owl
+- Snow leopard
+- Giant panda
+- Sea otter
+- Platypus
+- Aardvark
+- Humpback whale
 
 ## Recipe: Corn Chowder
 
