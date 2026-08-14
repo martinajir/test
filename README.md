@@ -1,4 +1,4 @@
-# test
+# test 🦝
 
 Public test repo used for experimenting with GitHub Copilot workflows and sandbox tooling.
 
@@ -6,7 +6,7 @@ Public test repo used for experimenting with GitHub Copilot workflows and sandbo
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
 
-## Recipe: Corn Chowder
+## Recipe: Corn Chowder 🦝
 
 A simple, hearty corn chowder.
 
@@ -34,7 +34,7 @@ A simple, hearty corn chowder.
 6. Stir in the cream (or milk), and season with salt and pepper. Simmer for another 5 minutes.
 7. Serve hot, topped with the reserved bacon and chopped chives or parsley.
 
-## Recipe: Borscht
+## Recipe: Borscht 🦝
 
 A classic Ukrainian beet soup, served hot or cold.
 
