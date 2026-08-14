@@ -1,16 +1,16 @@
-# test
+# 🧪 test
 
 Public test repo used for experimenting with GitHub Copilot workflows and sandbox tooling.
 
-## About
+## ℹ️ About
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
 
-## Recipe: Corn Chowder
+## 🌽 Recipe: Corn Chowder
 
 A simple, hearty corn chowder.
 
-### Ingredients
+### 🛒 Ingredients
 
 - 4 slices bacon, chopped (optional)
 - 1 tablespoon butter
@@ -24,7 +24,7 @@ A simple, hearty corn chowder.
 - Salt and pepper, to taste
 - Chopped chives or parsley, for garnish
 
-### Instructions
+### 👩‍🍳 Instructions
 
 1. In a large pot over medium heat, cook the bacon until crisp. Remove and set aside, leaving the fat in the pot (or melt the butter if skipping bacon).
 2. Add the onion and celery, and sauté until softened, about 5 minutes.
@@ -34,11 +34,11 @@ A simple, hearty corn chowder.
 6. Stir in the cream (or milk), and season with salt and pepper. Simmer for another 5 minutes.
 7. Serve hot, topped with the reserved bacon and chopped chives or parsley.
 
-## Recipe: Borscht
+## 🍲 Recipe: Borscht
 
 A classic Ukrainian beet soup, served hot or cold.
 
-### Ingredients
+### 🛒 Ingredients
 
 - 1 tablespoon oil or butter
 - 1 onion, diced
@@ -53,7 +53,7 @@ A classic Ukrainian beet soup, served hot or cold.
 - Salt and pepper, to taste
 - Sour cream and fresh dill, for garnish
 
-### Instructions
+### 👩‍🍳 Instructions
 
 1. Heat the oil in a large pot over medium heat. Sauté the onion and carrots until softened, about 5 minutes.
 2. Add the grated beets and tomato paste, stirring to combine, and cook for another 5 minutes.
