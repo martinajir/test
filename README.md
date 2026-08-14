@@ -6,6 +6,16 @@ Public test repo used for experimenting with GitHub Copilot workflows and sandbo
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
 
+## Animals
+
+A running list of animals:
+
+- Elephant
+- Dolphin
+- Red panda
+- Octopus
+- Peregrine falcon
+
 ## Recipe: Corn Chowder
 
 A simple, hearty corn chowder.
