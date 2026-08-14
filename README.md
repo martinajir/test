@@ -27,6 +27,12 @@ A running list of animals:
 - Platypus
 - Aardvark
 - Humpback whale
+- Monarch butterfly
+- Honeybee
+- Ladybug
+- Praying mantis
+- Firefly
+- Dung beetle
 
 ## Recipe: Corn Chowder
 
