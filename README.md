@@ -2,6 +2,19 @@
 
 Public test repo used for experimenting with GitHub Copilot workflows and sandbox tooling.
 
+## Automation
+
+The [pull request merge conflict workflow](.github/workflows/pr-merge-conflicts.yml)
+checks pull requests when they change and whenever a target branch receives new
+commits. It posts one warning comment when a conflict is detected and removes
+the comment after the conflict is resolved or the pull request is closed.
+
+Run its unit tests with:
+
+```shell
+node --test .github/scripts/merge-conflict-listener.test.js
+```
+
 ## About
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
