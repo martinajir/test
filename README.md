@@ -6,6 +6,41 @@ Public test repo used for experimenting with GitHub Copilot workflows and sandbo
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
 
+## Pull request opened webhook listener
+
+`pull_request_opened_listener.py` is a dependency-free HTTP listener for GitHub
+`pull_request` webhooks. It validates each delivery's
+`X-Hub-Signature-256` header, ignores unrelated events and actions, and logs
+newly opened pull requests.
+
+Set a high-entropy webhook secret and start the listener:
+
+```shell
+WEBHOOK_SECRET="replace-with-your-secret" python3 pull_request_opened_listener.py
+```
+
+The listener uses `http://127.0.0.1:3000/webhook` by default. Set `HOST` and
+`PORT` to change the bind address, and use `GET /health` for a readiness check.
+
+In the repository's **Settings > Webhooks**, configure:
+
+- **Payload URL:** The public HTTPS URL that forwards to `/webhook`
+- **Content type:** `application/json`
+- **Secret:** The same value as `WEBHOOK_SECRET`
+- **Events:** Select **Pull requests**
+
+Run the tests with:
+
+```shell
+python3 -m unittest -v
+```
+
+The implementation follows GitHub's public documentation for
+[handling webhook deliveries](https://docs.github.com/en/webhooks/using-webhooks/handling-webhook-deliveries),
+[validating webhook deliveries](https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries),
+and the
+[`pull_request` event payload](https://docs.github.com/en/webhooks/webhook-events-and-payloads#pull_request).
+
 ## Recipe: Corn Chowder
 
 A simple, hearty corn chowder.
