@@ -1,0 +1,19 @@
+name: PR Opened Listener
+
+on:
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report opened pull request
+        env:
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          printf 'Pull request #%s opened by %s\n' "$PR_NUMBER" "$PR_AUTHOR"
+          printf 'Title: %s\n' "$PR_TITLE"
