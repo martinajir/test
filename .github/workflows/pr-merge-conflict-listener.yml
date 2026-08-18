@@ -1,0 +1,133 @@
+name: PR merge conflict listener
+
+on:
+  pull_request_target:
+    types: [opened, edited, reopened, synchronize, ready_for_review]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+concurrency:
+  group: pr-merge-conflict-listener-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update-label:
+    name: Update merge conflict labels
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect pull requests
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const conflictLabel = "merge-conflict";
+
+            let pullRequests;
+            if (context.eventName === "pull_request_target") {
+              pullRequests = [context.payload.pull_request];
+            } else {
+              const base = context.eventName === "push"
+                ? context.ref.replace("refs/heads/", "")
+                : undefined;
+              pullRequests = await github.paginate(github.rest.pulls.list, {
+                owner,
+                repo,
+                state: "open",
+                base,
+                per_page: 100,
+              });
+            }
+
+            if (pullRequests.length === 0) {
+              core.notice("No open pull requests to inspect.");
+              return;
+            }
+
+            async function getMergeableState(number) {
+              for (let attempt = 1; attempt <= 10; attempt += 1) {
+                const { data } = await github.rest.pulls.get({
+                  owner,
+                  repo,
+                  pull_number: number,
+                });
+                if (data.mergeable !== null) {
+                  return data.mergeable;
+                }
+                if (attempt < 10) {
+                  await new Promise((resolve) => setTimeout(resolve, 2000));
+                }
+              }
+              throw new Error(`GitHub did not determine mergeability for PR #${number}.`);
+            }
+
+            let labelExists = true;
+            try {
+              await github.rest.issues.getLabel({
+                owner,
+                repo,
+                name: conflictLabel,
+              });
+            } catch (error) {
+              if (error.status !== 404) {
+                throw error;
+              }
+              labelExists = false;
+            }
+
+            for (const pullRequest of pullRequests) {
+              const number = pullRequest.number;
+              const hasConflict = !(await getMergeableState(number));
+              const labels = await github.paginate(
+                github.rest.issues.listLabelsOnIssue,
+                {
+                  owner,
+                  repo,
+                  issue_number: number,
+                  per_page: 100,
+                },
+              );
+              const hasLabel = labels.some((label) => label.name === conflictLabel);
+
+              if (hasConflict && !hasLabel) {
+                if (!labelExists) {
+                  try {
+                    await github.rest.issues.createLabel({
+                      owner,
+                      repo,
+                      name: conflictLabel,
+                      color: "B60205",
+                      description: "This pull request has merge conflicts",
+                    });
+                  } catch (error) {
+                    if (error.status !== 422) {
+                      throw error;
+                    }
+                  }
+                  labelExists = true;
+                }
+                await github.rest.issues.addLabels({
+                  owner,
+                  repo,
+                  issue_number: number,
+                  labels: [conflictLabel],
+                });
+                core.notice(`Added ${conflictLabel} to PR #${number}.`);
+              } else if (!hasConflict && hasLabel) {
+                await github.rest.issues.removeLabel({
+                  owner,
+                  repo,
+                  issue_number: number,
+                  name: conflictLabel,
+                });
+                core.notice(`Removed ${conflictLabel} from PR #${number}.`);
+              } else {
+                core.notice(`PR #${number} already has the expected label state.`);
+              }
+            }
