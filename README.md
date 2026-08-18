@@ -2,6 +2,14 @@
 
 Public test repo used for experimenting with GitHub Copilot workflows and sandbox tooling.
 
+## Pull request merge conflict listener
+
+The `PR merge conflict listener` workflow checks pull requests when they are
+opened or updated and whenever `main` changes. Conflicting pull requests receive
+a `merge-conflict` label and one guidance comment; the label is removed
+automatically after the conflicts are resolved. The workflow can also be run
+manually to inspect every open pull request targeting `main`.
+
 ## About
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
