@@ -2,6 +2,12 @@
 
 Public test repo used for experimenting with GitHub Copilot workflows and sandbox tooling.
 
+## Automation
+
+The [pull request opened workflow](.github/workflows/pr-opened.yml) listens for
+new pull requests and records their number, title, author, and URL in the
+workflow run summary.
+
 ## About
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
