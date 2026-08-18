@@ -1,0 +1,28 @@
+name: PR opened listener
+
+"on":
+  pull_request:
+    types:
+      - opened
+
+permissions:
+  contents: read
+
+jobs:
+  record-pr:
+    name: Record opened pull request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write pull request details to the workflow summary
+        env:
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          {
+            echo "## Pull request opened"
+            printf -- "- PR: [#%s](%s)\n" "$PR_NUMBER" "$PR_URL"
+            printf -- "- Title: %s\n" "$PR_TITLE"
+            printf -- "- Author: @%s\n" "$PR_AUTHOR"
+          } >> "$GITHUB_STEP_SUMMARY"
