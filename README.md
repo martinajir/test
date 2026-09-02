@@ -6,6 +6,12 @@ Public test repo used for experimenting with GitHub Copilot workflows and sandbo
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
 
+## Repository contents
+
+- `add_numbers.py`: a small command-line script that adds two numbers.
+- `pirate-jokes.txt`: a collection of pirate-themed jokes.
+- `README.md`: repository notes and recipes.
+
 ## Recipe: Corn Chowder
 
 A simple, hearty corn chowder.
