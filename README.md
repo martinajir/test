@@ -5,12 +5,25 @@ Public test repo used for experimenting with GitHub Copilot workflows and sandbo
 ## Contents
 
 - [About](#about)
+- [Getting started](#getting-started)
 - [Corn Chowder](#recipe-corn-chowder)
 - [Borscht](#recipe-borscht)
 
 ## About
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
+
+## Getting started
+
+No build, installation, or runtime setup is required. Clone the repository and
+open this README to explore its examples:
+
+```sh
+git clone https://github.com/martinajir/test.git
+cd test
+```
+
+Use the contents links above to jump directly to a recipe.
 
 ## Recipe: Corn Chowder
 
