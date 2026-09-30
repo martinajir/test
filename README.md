@@ -5,12 +5,42 @@ Public test repo used for experimenting with GitHub Copilot workflows and sandbo
 ## Contents
 
 - [About](#about)
+- [Repository files](#repository-files)
+- [Quick start](#quick-start)
 - [Corn Chowder](#recipe-corn-chowder)
 - [Borscht](#recipe-borscht)
 
 ## About
 
 This repository is a lightweight scratch space — not a production project. It's used to try things out, test automation, and validate tooling behavior.
+
+## Repository files
+
+- `add_numbers.py`: a small Python command-line program that adds two numbers.
+- `add_numbers.jl`: the same addition example implemented in Julia.
+- `pirate-jokes.txt`: a collection of pirate jokes.
+
+## Quick start
+
+Run the Python example with two numbers:
+
+```bash
+python3 add_numbers.py 5 7
+```
+
+Or run the Julia version:
+
+```bash
+julia add_numbers.jl 5 7
+```
+
+Both scripts print:
+
+```text
+The sum of 5.0 and 7.0 is 12.0
+```
+
+Run either script without arguments to enter the numbers interactively.
 
 ## Recipe: Corn Chowder
 
